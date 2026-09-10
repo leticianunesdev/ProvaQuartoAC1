@@ -1,0 +1,27 @@
+<h2>Musicas da minha escolha</h2>
+
+<div class="adicionar">
+  <input type="text" [(ngModel)]="novaMusica" placeholder="Digite uma nova música" />
+  <button (click)="adicionarMusica()">Adicionar</button>
+</div>
+
+<ul>
+  @for (item of musicas; track item) {
+    <li (click)="selecionarMusica(item)">{{ item }}</li>
+  }
+</ul>
+
+@if (musicaSelecionada) {
+  <p>Você escolheu: {{ musicaSelecionada }}</p>
+  <p>Estado: {{ estadoMusica }}</p>
+
+  <button (click)="alternarMusica()">
+    {{ musicaTocando ? 'Pausar' : 'Reproduzir' }}
+  </button>
+
+  <button (click)="pararMusica()">Parar</button>
+}
+
+<button (click)="curtir()">Curtir</button>
+<p class="curtidas">{{ curtidas }} curtidas</p>
+
